@@ -121,7 +121,7 @@ echo ""
 cd backend
 
 # Install dependencies
-npm ci --only=production
+npm install --production
 
 # Generate secrets (alphanumeric only)
 JWT_SECRET=$(openssl rand -hex 32)
@@ -169,7 +169,7 @@ echo ""
 cd ../frontend
 
 # Install dependencies
-npm ci
+npm install
 
 # Create .env.local file
 cat > .env.local << EOF
