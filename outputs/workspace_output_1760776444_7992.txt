@@ -1,0 +1,6 @@
+[main 628ee77] Add comprehensive Cloudflare setup guide and update documentation
+ 5 files changed, 532 insertions(+), 1 deletion(-)
+ create mode 100644 docs/cloudflare-setup.md
+ create mode 100644 outputs/workspace_output_1760776444_7992.txt
+To https://github.com/HLPFLCG/openvape-commerce.git
+   ccd83d4..628ee77  main -> main
