@@ -104,7 +104,11 @@ docker-compose exec backend npm run migrate
 
 1. Get a VPS (DigitalOcean, Linode, Vultr, etc.)
 2. Point your domain to the VPS IP
+   - **Option A**: Direct DNS (traditional)
+   - **Option B**: Cloudflare (recommended - free DDoS protection + CDN)
 3. Wait for DNS propagation (5-30 minutes)
+
+**Using Cloudflare?** See [CLOUDFLARE_QUICK_SETUP.md](CLOUDFLARE_QUICK_SETUP.md) for 5-minute setup.
 
 ### Step 3: Deploy
 

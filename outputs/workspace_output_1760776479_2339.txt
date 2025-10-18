@@ -1,0 +1,6 @@
+[main ad51fd6] Add Cloudflare quick setup guide
+ 3 files changed, 191 insertions(+)
+ create mode 100644 CLOUDFLARE_QUICK_SETUP.md
+ create mode 100644 outputs/workspace_output_1760776479_2339.txt
+To https://github.com/HLPFLCG/openvape-commerce.git
+   628ee77..ad51fd6  main -> main
