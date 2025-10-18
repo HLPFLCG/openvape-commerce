@@ -1,0 +1,7 @@
+[main 1a8537a] Add comprehensive getting started guide
+ 4 files changed, 381 insertions(+)
+ create mode 100644 GETTING_STARTED.md
+ create mode 100644 outputs/workspace_output_1760775740_5486.txt
+ create mode 100644 outputs/workspace_output_1760775791_8784.txt
+To https://github.com/HLPFLCG/openvape-commerce.git
+   f3470c3..1a8537a  main -> main
