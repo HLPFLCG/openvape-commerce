@@ -12,6 +12,11 @@ const app = express();
 // Security middleware
 app.use(helmet());
 
+// Trust proxy (required for rate limiting behind Nginx)
+app.set('trust proxy', 1);
+
+app.use(cors({
+
 // CORS configuration
 app.use(cors({
   origin: config.frontendUrl,
