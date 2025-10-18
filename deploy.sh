@@ -18,38 +18,33 @@ if [ "$EUID" -ne 0 ]; then
     exit 1
 fi
 
-# Function to prompt for input
-prompt() {
-    read -p "$1: " value
-    echo "$value"
-}
-
-# Function to generate random secret
+# Function to generate random secret (alphanumeric only, no special chars)
 generate_secret() {
-    openssl rand -base64 32
+    openssl rand -hex 16
 }
 
 echo "=== Server Setup ==="
 echo ""
 
 # Get domain information
-DOMAIN=$(prompt "Enter your domain (e.g., example.com)")
-API_DOMAIN=$(prompt "Enter your API subdomain (e.g., api.example.com)")
+read -p "Enter your domain (e.g., example.com): " DOMAIN
+read -p "Enter your API subdomain (e.g., api.example.com): " API_DOMAIN
 
 # Get database password
-DB_PASSWORD=$(prompt "Enter PostgreSQL password (or press Enter to generate)")
+read -p "Enter PostgreSQL password (or press Enter to generate): " DB_PASSWORD
 if [ -z "$DB_PASSWORD" ]; then
-    DB_PASSWORD=$(generate_secret)
+    DB_PASSWORD=$(openssl rand -hex 16)
     echo "Generated database password: $DB_PASSWORD"
 fi
 
 # Get email configuration
-SMTP_HOST=$(prompt "Enter SMTP host (e.g., smtp.gmail.com)")
-SMTP_PORT=$(prompt "Enter SMTP port (default: 587)")
+read -p "Enter SMTP host (e.g., smtp.gmail.com): " SMTP_HOST
+read -p "Enter SMTP port (default: 587): " SMTP_PORT
 SMTP_PORT=${SMTP_PORT:-587}
-SMTP_USER=$(prompt "Enter SMTP username/email")
-SMTP_PASS=$(prompt "Enter SMTP password")
-EMAIL_FROM=$(prompt "Enter 'From' email address")
+read -p "Enter SMTP username/email: " SMTP_USER
+read -sp "Enter SMTP password: " SMTP_PASS
+echo ""
+read -p "Enter 'From' email address: " EMAIL_FROM
 
 echo ""
 echo "=== Installing Dependencies ==="
@@ -133,9 +128,9 @@ cd backend
 # Install dependencies
 npm ci --only=production
 
-# Generate secrets
-JWT_SECRET=$(generate_secret)
-JWT_REFRESH_SECRET=$(generate_secret)
+# Generate secrets (alphanumeric only)
+JWT_SECRET=$(openssl rand -hex 32)
+JWT_REFRESH_SECRET=$(openssl rand -hex 32)
 
 # Create .env file
 cat > .env << EOF
