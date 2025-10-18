@@ -74,7 +74,8 @@ OpenVape Commerce is a fully open-source, highly customizable e-commerce platfor
 ### Infrastructure
 - **Containerization**: Docker & Docker Compose
 - **Reverse Proxy**: Nginx
-- **SSL**: Let's Encrypt
+- **SSL**: Let's Encrypt or Cloudflare
+- **CDN**: Cloudflare (optional, recommended)
 - **Caching**: Redis
 
 ## Quick Start

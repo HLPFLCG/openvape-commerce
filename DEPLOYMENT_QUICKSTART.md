@@ -56,12 +56,28 @@ sudo ./deploy.sh
 
 Before running the deployment script, make sure your DNS is configured:
 
+**Option A: Direct DNS (Traditional)**
+
 **A Records:**
 - `yourdomain.com` → Your VPS IP
 - `www.yourdomain.com` → Your VPS IP
 - `api.yourdomain.com` → Your VPS IP
 
 Wait for DNS propagation (can take up to 24 hours, usually much faster).
+
+**Option B: Cloudflare (Recommended)**
+
+Use Cloudflare for free DDoS protection, CDN, and SSL:
+
+1. Sign up at [Cloudflare.com](https://cloudflare.com) (Free plan)
+2. Add your domain
+3. Update nameservers at your registrar
+4. Add DNS records (proxied through Cloudflare):
+   - `yourdomain.com` → Your VPS IP (Proxied)
+   - `www.yourdomain.com` → Your VPS IP (Proxied)
+   - `api.yourdomain.com` → Your VPS IP (Proxied)
+
+See [docs/cloudflare-setup.md](docs/cloudflare-setup.md) for detailed Cloudflare setup.
 
 ### 3. Run Deployment
 
