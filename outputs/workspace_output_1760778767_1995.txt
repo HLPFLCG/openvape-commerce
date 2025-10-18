@@ -1,0 +1,21 @@
+read -p "Enter your domain (e.g., example.com): " DOMAIN
+read -p "Enter your API subdomain (e.g., api.example.com): " API_DOMAIN
+
+# Get database password
+read -p "Enter PostgreSQL password (or press Enter to generate): " DB_PASSWORD
+if [ -z "$DB_PASSWORD" ]; then
+    DB_PASSWORD=$(openssl rand -hex 16)
+    echo "Generated database password: $DB_PASSWORD"
+fi
+
+# Get email configuration
+read -p "Enter SMTP host (e.g., smtp.gmail.com): " SMTP_HOST
+read -p "Enter SMTP port (default: 587): " SMTP_PORT
+SMTP_PORT=${SMTP_PORT:-587}
+read -p "Enter SMTP username/email: " SMTP_USER
+read -sp "Enter SMTP password: " SMTP_PASS
+echo ""
+read -p "Enter 'From' email address: " EMAIL_FROM
+
+echo ""
+echo "=== Installing Dependencies ==="

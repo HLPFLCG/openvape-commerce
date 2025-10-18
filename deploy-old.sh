@@ -18,6 +18,11 @@ if [ "$EUID" -ne 0 ]; then
     exit 1
 fi
 
+# Function to generate random secret (alphanumeric only, no special chars)
+generate_secret() {
+    openssl rand -hex 16
+}
+
 echo "=== Server Setup ==="
 echo ""
 

@@ -1,0 +1,4 @@
+[main 29f1ab3] Fix deployment script: remove special characters from generated passwords
+ 1 file changed, 15 insertions(+), 20 deletions(-)
+To https://github.com/HLPFLCG/openvape-commerce.git
+   c4b514d..29f1ab3  main -> main

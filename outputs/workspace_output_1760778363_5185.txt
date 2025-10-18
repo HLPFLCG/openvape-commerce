@@ -1,0 +1,50 @@
+#!/bin/bash
+
+# OpenVape Commerce Deployment Script
+# This script automates the deployment process
+
+set -e
+
+echo "╔═══════════════════════════════════════════════════════╗"
+echo "║                                                       ║"
+echo "║   OpenVape Commerce Deployment Script                ║"
+echo "║                                                       ║"
+echo "╚═══════════════════════════════════════════════════════╝"
+echo ""
+
+# Check if running as root
+if [ "$EUID" -ne 0 ]; then 
+    echo "Please run as root (use sudo)"
+    exit 1
+fi
+
+# Function to prompt for input
+prompt() {
+    read -p "$1: " value
+    echo "$value"
+}
+
+# Function to generate random secret
+generate_secret() {
+    openssl rand -base64 32
+}
+
+echo "=== Server Setup ==="
+echo ""
+
+# Get domain information
+DOMAIN=$(prompt "Enter your domain (e.g., example.com)")
+API_DOMAIN=$(prompt "Enter your API subdomain (e.g., api.example.com)")
+
+# Get database password
+DB_PASSWORD=$(prompt "Enter PostgreSQL password (or press Enter to generate)")
+if [ -z "$DB_PASSWORD" ]; then
+    DB_PASSWORD=$(generate_secret)
+    echo "Generated database password: $DB_PASSWORD"
+fi
+
+# Get email configuration
+SMTP_HOST=$(prompt "Enter SMTP host (e.g., smtp.gmail.com)")
+SMTP_PORT=$(prompt "Enter SMTP port (default: 587)")
+SMTP_PORT=${SMTP_PORT:-587}
+SMTP_USER=$(prompt "Enter SMTP username/email")

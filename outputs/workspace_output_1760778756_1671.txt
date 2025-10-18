@@ -1,0 +1,20 @@
+15:# Check if running as root
+16:if [ "$EUID" -ne 0 ]; then 
+19:fi
+35:if [ -z "$DB_PASSWORD" ]; then
+38:fi
+40:# Get email configuration
+57:if ! command -v node &> /dev/null; then
+61:fi
+64:if ! command -v psql &> /dev/null; then
+67:fi
+70:if ! command -v nginx &> /dev/null; then
+73:fi
+76:if ! command -v certbot &> /dev/null; then
+79:fi
+82:if ! command -v pm2 &> /dev/null; then
+85:fi
+88:if ! command -v git &> /dev/null; then
+91:fi
+116:if [ ! -d ".git" ]; then
+120:fi
